@@ -6,6 +6,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.awt.dnd.Autoscroll;
+
 import static contant.BaseContant.*;
 
 public class test extends BaseMethod {
@@ -33,6 +35,26 @@ public void beforeMethod() {
         Thread.sleep(2000);
         click(FARELIST);
         Thread.sleep(8000);
+        sendKeys(INPUTEMAIL,"mert.yeni@obilet.com");
+        Thread.sleep(1000);
+        sendKeys(INPUTPHONE,"5063637195");
+        Thread.sleep(1000);
+        sendKeys(INPUTFIRSTNAME,"Mert");
+        Thread.sleep(1000);
+        sendKeys(INPUTLASTNAME,"Yeni");
+        Thread.sleep(1000);
+        click(INPUTBIRTHDAY);
+        Thread.sleep(2000);
+        click(INPUTBIRTHMONTH);
+        Thread.sleep(2000);
+        click(INPUTBIRTHYEAR);
+        Thread.sleep(2000);
+        sendKeys(INPUTNATIONALID, "55972064536");
+        Thread.sleep(1000);
+        click(MALECHECK);
+
+
+
 
     }
 
