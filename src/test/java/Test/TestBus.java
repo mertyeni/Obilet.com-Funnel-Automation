@@ -101,7 +101,7 @@ public class TestBus extends BaseMethod {
         sendKeys(INPUTCARDEXP, "25");
         Thread.sleep(1000);
         sendKeys(INPUTCARDCVC, "001");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
     }
 
     @AfterMethod

@@ -5,8 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.*;
 import io.qameta.allure.Step;
 
-import java.util.Iterator;
-import java.util.Set;
+
 
 import static contant.BaseContant.*;
 
@@ -137,7 +136,7 @@ public class TestFerry extends BaseMethod {
     @Step("Click Confirm Cookies Button")
     public void confirmCookies() throws InterruptedException {
         click(FERRYCONFIRMCOOKIE);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
     }
 
     @AfterMethod

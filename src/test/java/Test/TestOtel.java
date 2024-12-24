@@ -71,7 +71,7 @@ public class TestOtel extends BaseMethod {
     @Step("Search for available hotels")
     public void searchHotels() throws InterruptedException {
         click(SEARCH_BUTTON);
-        Thread.sleep(10000);
+        Thread.sleep(8000);
     }
 
     @Step("Apply quick filters and select a hotel")
@@ -140,7 +140,7 @@ public class TestOtel extends BaseMethod {
         sendKeys(INPUTCARDEXP, "25");
         Thread.sleep(1000);
         sendKeys(INPUTCARDCVC, "001");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
     }
 
     @AfterMethod

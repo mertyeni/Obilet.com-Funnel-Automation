@@ -3,15 +3,12 @@ package Test;
 import method.BaseMethod;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.*;
-
-import java.awt.dnd.Autoscroll;
-import java.util.Iterator;
-import java.util.Set;
+import io.qameta.allure.Step;
 
 import static contant.BaseContant.*;
-import io.qameta.allure.*;
 
-public class test extends BaseMethod {
+public class TestFlight extends BaseMethod {
+
     @BeforeMethod
     public void beforeMethod() {
         setUp();
@@ -24,7 +21,7 @@ public class test extends BaseMethod {
         allowFirstPopup();
         selectFlightDate();
         searchFlights();
-        closePopup();
+        //closePopup();
         scrollToDetailsSection(js);
         selectDetailsAndFare();
         fillPassengerInformation();
@@ -55,18 +52,18 @@ public class test extends BaseMethod {
     @Step("Search for flights")
     public void searchFlights() throws InterruptedException {
         click(SEARCH_BUTTON);
-        Thread.sleep(8000);
+        Thread.sleep(10000);
     }
 
-    @Step("Close the popup")
-    public void closePopup() throws InterruptedException {
-        click(POPUP_CLOSE);
+    //@Step("Close the popup")
+   public void closePopup() throws InterruptedException {
+       // click(POPUP_CLOSE);
         Thread.sleep(2000);
     }
 
     @Step("Scroll to the details section")
     public void scrollToDetailsSection(JavascriptExecutor js) throws InterruptedException {
-        js.executeScript("window.scrollTo(0, 1200);");
+        js.executeScript("window.scrollTo(0, 3200);");
         Thread.sleep(1500);
     }
 
@@ -123,7 +120,7 @@ public class test extends BaseMethod {
         sendKeys(INPUTCARDEXP, "25");
         Thread.sleep(1000);
         sendKeys(INPUTCARDCVC, "001");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
     }
 
 
