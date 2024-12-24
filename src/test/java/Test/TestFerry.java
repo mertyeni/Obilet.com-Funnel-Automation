@@ -2,6 +2,7 @@ package Test;
 
 import method.BaseMethod;
 import org.openqa.selenium.JavascriptExecutor;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import io.qameta.allure.Step;
 
@@ -140,7 +141,10 @@ public class TestFerry extends BaseMethod {
     }
 
     @AfterMethod
-    public void afterMethod() {
+    public void afterMethod(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            takeScreenshot();
+        }
         tearDown();
     }
 }

@@ -2,6 +2,7 @@ package Test;
 
 import method.BaseMethod;
 import org.openqa.selenium.JavascriptExecutor;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import io.qameta.allure.Step;
 
@@ -21,7 +22,7 @@ public class TestFlight extends BaseMethod {
         allowFirstPopup();
         selectFlightDate();
         searchFlights();
-        //closePopup();
+        closePopup();
         scrollToDetailsSection(js);
         selectDetailsAndFare();
         fillPassengerInformation();
@@ -55,15 +56,15 @@ public class TestFlight extends BaseMethod {
         Thread.sleep(10000);
     }
 
-    //@Step("Close the popup")
+   @Step("Close the popup")
    public void closePopup() throws InterruptedException {
-       // click(POPUP_CLOSE);
+       click(POPUP_CLOSE);
         Thread.sleep(2000);
     }
 
     @Step("Scroll to the details section")
     public void scrollToDetailsSection(JavascriptExecutor js) throws InterruptedException {
-        js.executeScript("window.scrollTo(0, 3200);");
+        js.executeScript("window.scrollTo(0, 2800);");
         Thread.sleep(1500);
     }
 
@@ -128,8 +129,11 @@ public class TestFlight extends BaseMethod {
 
 
     @AfterMethod
-    public void afterMethod() {
-    tearDown();
+    public void afterMethod(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE || result.getStatus() == ITestResult.SKIP) {
+            takeScreenshotOnFailure(result.getName());
+        }
+        tearDown();
     }
     }
 
