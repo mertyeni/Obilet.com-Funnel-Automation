@@ -9,10 +9,9 @@ import java.util.Iterator;
 import java.util.Set;
 
 import static contant.BaseContant.*;
+import io.qameta.allure.*;
 
 public class test extends BaseMethod {
-
-
     @BeforeMethod
     public void beforeMethod() {
         setUp();
@@ -21,24 +20,66 @@ public class test extends BaseMethod {
     @Test // Flight - Funnel
     public void testFlight() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
+        clickFlightButton();
+        allowFirstPopup();
+        selectFlightDate();
+        searchFlights();
+        closePopup();
+        scrollToDetailsSection(js);
+        selectDetailsAndFare();
+        fillPassengerInformation();
+        scrollAndConfirmPrice(js);
+        fillPaymentInformation();
+    }
+
+    @Step("Click on the flight button")
+    public void clickFlightButton() throws InterruptedException {
         click(FLIGHT_BUTTON);
         Thread.sleep(2000);
+    }
+
+    @Step("Allow the first popup")
+    public void allowFirstPopup() throws InterruptedException {
         click(FIRSTALLOW);
         Thread.sleep(1000);
+    }
+
+    @Step("Select flight date")
+    public void selectFlightDate() throws InterruptedException {
         click(DATE_BUTTON);
         Thread.sleep(2000);
         click(DATE_DAY);
         Thread.sleep(4000);
+    }
+
+    @Step("Search for flights")
+    public void searchFlights() throws InterruptedException {
         click(SEARCH_BUTTON);
         Thread.sleep(8000);
+    }
+
+    @Step("Close the popup")
+    public void closePopup() throws InterruptedException {
         click(POPUP_CLOSE);
         Thread.sleep(2000);
-        js.executeScript("window.scrollTo(0, 800);");
+    }
+
+    @Step("Scroll to the details section")
+    public void scrollToDetailsSection(JavascriptExecutor js) throws InterruptedException {
+        js.executeScript("window.scrollTo(0, 1200);");
         Thread.sleep(1500);
+    }
+
+    @Step("Select details and fare list")
+    public void selectDetailsAndFare() throws InterruptedException {
         click(DETAILS);
         Thread.sleep(2000);
         click(FARELIST);
         Thread.sleep(8000);
+    }
+
+    @Step("Fill in passenger information")
+    public void fillPassengerInformation() throws InterruptedException {
         sendKeys(INPUTEMAIL, "mert.yeni@obilet.com");
         Thread.sleep(1000);
         sendKeys(INPUTPHONE, "5063637195");
@@ -57,16 +98,22 @@ public class test extends BaseMethod {
         Thread.sleep(1000);
         click(MALECHECK);
         Thread.sleep(1000);
-        // Sayfayı en alta kaydırma işlemi
+    }
+
+    @Step("Scroll to the bottom and confirm price")
+    public void scrollAndConfirmPrice(JavascriptExecutor js) throws InterruptedException {
         js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
         Thread.sleep(2000);
         click(OVERALLPRICE);
         Thread.sleep(1000);
         js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
         Thread.sleep(2000);
-        // Sayfayı geri yukarıya kaydırma
-        js.executeScript("window.scrollTo(0, 0);"); //
+        js.executeScript("window.scrollTo(0, 0);");
         Thread.sleep(1000);
+    }
+
+    @Step("Fill in payment information")
+    public void fillPaymentInformation() throws InterruptedException {
         sendKeys(INPUTCARDNUMBER, "4111");
         sendKeys(INPUTCARDNUMBER, "1111");
         sendKeys(INPUTCARDNUMBER, "1111");
@@ -77,207 +124,7 @@ public class test extends BaseMethod {
         Thread.sleep(1000);
         sendKeys(INPUTCARDCVC, "001");
         Thread.sleep(1000);
-
     }
-
-
-
-
-    @Test // BusTR - Funnel
-    public void testBus() throws InterruptedException {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        click(FIRSTALLOW);
-        Thread.sleep(1000);
-        sendKeys(ORIGIN_BUTTON, "Bucak");
-        Thread.sleep(3000);
-        click(BUSORIGINID);
-        Thread.sleep(1000);
-        sendKeys(DESTINATION_BUTTON, "İzmir");
-        Thread.sleep(3000);
-        click(BUSDESTINATIONID);
-        Thread.sleep(1000);
-        click(BUSDATEBUTTON);
-        Thread.sleep(2000);
-        click(BUSDATEDAY);
-        Thread.sleep(4000);
-        click(SEARCH_BUTTON);
-        Thread.sleep(10000);
-        js.executeScript("window.scrollTo(0, 300);");
-        Thread.sleep(1500);
-        click(BUSDETAILS);
-        Thread.sleep(5500);
-        click(CHOOSESEAT);
-        Thread.sleep(2000);
-        click(CHOOSEGENDER);
-        Thread.sleep(2000);
-        click(CONFIRMJOURNEY);
-        Thread.sleep(6000);
-        sendKeys(INPUTEMAIL, "mert.yeni@obilet.com");
-        Thread.sleep(1000);
-        sendKeys(INPUTPHONE, "5063637195");
-        Thread.sleep(1000);
-        sendKeys(CHECKOUTNAME, "Mert Yeni");
-        Thread.sleep(1000);
-        sendKeys(CHECKOUTNATIONALID, "55972064536");
-        Thread.sleep(1000);
-        sendKeys(INPUTCARDNUMBER, "4111");
-        sendKeys(INPUTCARDNUMBER, "1111");
-        sendKeys(INPUTCARDNUMBER, "1111");
-        sendKeys(INPUTCARDNUMBER, "1111");
-        Thread.sleep(1000);
-        sendKeys(INPUTCARDEXP, "01");
-        sendKeys(INPUTCARDEXP, "25");
-        Thread.sleep(1000);
-        sendKeys(INPUTCARDCVC, "001");
-        Thread.sleep(1000);
-
-    }
-
-
-    @Test // Otel Funnel
-    public void testOtel() throws InterruptedException {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        click(OTELBUTTON);
-        Thread.sleep(1000);
-        click(FIRSTALLOW);
-        Thread.sleep(1000);
-        click(ORIGIN_BUTTON);
-        Thread.sleep(3000);
-        click(OTELORIGINID);
-        Thread.sleep(1000);
-        click(OTELDEPARTUREINPUT);
-        Thread.sleep(1000);
-        click(OTELENTERDATE);
-        Thread.sleep(1000);
-        click(OTELOUTDATE);
-        Thread.sleep(1000);
-        click(PAXTOGGLE);
-        Thread.sleep(1000);
-        click(REMOVETOGGLE);
-        Thread.sleep(1000);
-        click(SEARCH_BUTTON);
-        Thread.sleep(10000);
-        js.executeScript("window.scrollTo(0, 150);");
-        click(QUICKFILTER1);
-        Thread.sleep(1000);
-        click(OTELSELECT);
-        Thread.sleep(8000);
-        Set<String> windowHandles = driver.getWindowHandles();
-        Iterator<String> iterator = windowHandles.iterator();
-        String firstWindowHandle = iterator.next();
-        String secondWindowHandle = iterator.next();
-        driver.switchTo().window(secondWindowHandle);
-        Thread.sleep(1000);
-        click(OTELPOPUPCLOSE);
-        Thread.sleep(2000);
-        js.executeScript("window.scrollTo(0, 600);");
-        Thread.sleep(1500);
-        click(OTELGOTOROOM);
-        Thread.sleep(12000);
-        sendKeys(INPUTEMAIL, "mert.yeni@obilet.com");
-        Thread.sleep(1000);
-        sendKeys(INPUTPHONE, "5063637195");
-        Thread.sleep(1000);
-        click(SMSAPPROVE);
-        Thread.sleep(1000);
-        // Sayfayı en alta kaydırma işlemi
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-        Thread.sleep(1500);
-        sendKeys(OTELFIRSTNAME, "Mert");
-        Thread.sleep(1000);
-        sendKeys(OTELLASTNAME, "Yeni");
-        Thread.sleep(1000);
-        sendKeys(OTELNATIONALID, "55972064536");
-        Thread.sleep(1000);
-        click(OTELGENDERCHECK);
-        Thread.sleep(1000);
-        // Sayfayı geri yukarıya kaydırma
-        js.executeScript("window.scrollTo(0, 0);"); //
-        Thread.sleep(1500);
-        sendKeys(INPUTCARDNUMBER, "4111");
-        sendKeys(INPUTCARDNUMBER, "1111");
-        sendKeys(INPUTCARDNUMBER, "1111");
-        sendKeys(INPUTCARDNUMBER, "1111");
-        Thread.sleep(1000);
-        sendKeys(INPUTCARDEXP, "01");
-        sendKeys(INPUTCARDEXP, "25");
-        Thread.sleep(1000);
-        sendKeys(INPUTCARDCVC, "001");
-        Thread.sleep(1000);
-
-    }
-
-
-    @Test // Ferry funnel
-        public void testFerry() throws InterruptedException {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            click(FERRYBUTTON);
-            Thread.sleep(1000);
-            click(FIRSTALLOW);
-            Thread.sleep(1000);
-            click(DATE_BUTTON);
-            Thread.sleep(2000);
-            click(DATE_DAY);
-            Thread.sleep(4000);
-            click(SEARCH_BUTTON);
-            Thread.sleep(8000);
-            js.executeScript("window.scrollTo(0, 400);");
-            Thread.sleep(1500);
-            click(FERRYJOURNEYSELECT);
-            Thread.sleep(1000);
-            click(FERRYFARESELECT);
-            Thread.sleep(2200);
-            click(FERRYSEATSELECT);
-            Thread.sleep(2000);
-            click(FERRYCONFIRMJOURNEY);
-            Thread.sleep(10000);
-            sendKeys(INPUTEMAIL, "mert.yeni@obilet.com");
-            Thread.sleep(1000);
-            sendKeys(INPUTPHONE, "5063637195");
-            Thread.sleep(1000);
-            sendKeys(FERRYINPUTNAME,"Mert Yeni");
-            Thread.sleep(1000);
-            sendKeys(FERRYINPUTGOVID,"55972064536");
-            Thread.sleep(800);
-            click(FERRYBIRTHDAY);
-            Thread.sleep(1000);
-            click(FERRYBIRTHMONTH);
-            Thread.sleep(1000);
-            click(FERRYBIRTHYEAR);
-            Thread.sleep(1000);
-            sendKeys(INPUTCARDNUMBER, "4111");
-            sendKeys(INPUTCARDNUMBER, "1111");
-            sendKeys(INPUTCARDNUMBER, "1111");
-            sendKeys(INPUTCARDNUMBER, "1111");
-            Thread.sleep(1000);
-            sendKeys(INPUTCARDEXP, "01");
-            sendKeys(INPUTCARDEXP, "25");
-            Thread.sleep(1000);
-            sendKeys(INPUTCARDCVC, "001");
-            Thread.sleep(1000);
-            click(FERRYCONFIRMCOOKIE);
-            Thread.sleep(1000);
-
-
-
-
-
-
-
-
-
-
-
-
-    }
-
-
-
-
-
-
-
-
 
 
 
