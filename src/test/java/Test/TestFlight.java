@@ -64,7 +64,7 @@ public class TestFlight extends BaseMethod {
 
     @Step("Scroll to the details section")
     public void scrollToDetailsSection(JavascriptExecutor js) throws InterruptedException {
-        js.executeScript("window.scrollTo(0, 2800);");
+        js.executeScript("window.scrollTo(0, 1850);");
         Thread.sleep(1500);
     }
 

@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 
 
 public class BaseContant {
-
+     // FLIGHT
     public static final By FLIGHT_BUTTON= By.cssSelector("[data-event-action='Flight']");
     public static final By ORIGIN_BUTTON= By.id("origin-input");
     public static final By DESTINATION_BUTTON= By.id("destination-input");
@@ -42,12 +42,13 @@ public class BaseContant {
     public static final By BUSDESTINATIONID=By.xpath("//*[@id=\"destination\"]/div[2]/ul/li[1]");
     public static final By BUSDATEBUTTON=By.xpath("//*[@id=\"departure\"]/div[1]/div[1]");
     public static final By BUSDATEDAY=By.xpath("//*[@id=\"departure\"]/div[3]/div/div[2]/div/table/tbody/tr[4]/td[3]/button/span");
-    public static final By BUSDETAILS=By.xpath("//*[@id=\"journey-916659744\"]/div[1]");
-    public static final By CHOOSESEAT=By.cssSelector("#journey-916659744 > div.details.details-container.row > div.journey-details-template > div.next > div.layout > div.wrapper > svg > a:nth-child(56) > text");
+    public static final By BUSDETAILS=By.xpath("//*[@id=\"journey-1073289730\"]/div[1]");
+    public static final By CHOOSESEAT=By.cssSelector("#journey-1073289730 > div.details.details-container.row > div.journey-details-template > div.next > div.layout.layout-sun-left > div.wrapper > svg > a:nth-child(59) > text");
     public static final By CHOOSEGENDER=By.xpath("//*[@id=\"main\"]/div[11]/div/button[1]");
-    public static final By CONFIRMJOURNEY=By.xpath("//*[@id=\"journey-916659744\"]/div[2]/div[2]/div[2]/div[2]/button");
-    public static final By CHECKOUTNAME=By.xpath("//*[@id=\"name-35\"]");
-    public static final By CHECKOUTNATIONALID=By.xpath("//*[@id=\"gov-id-35\"]");
+    public static final By CONFIRMJOURNEY=By.xpath("//*[@id=\"journey-1073289730\"]/div[2]/div[2]/div[2]/div[2]/button/span[1]");
+    public static final By CHECKOUTNAME=By.xpath("//*[@id=\"name-42\"]");
+    public static final By CHECKOUTNATIONALID=By.xpath("//*[@id=\"gov-id-42\"]");
+    public static final By LISTCLOSEPOPUP=By.cssSelector("#close-button-1454703513200 > svg > path");
 
 
 

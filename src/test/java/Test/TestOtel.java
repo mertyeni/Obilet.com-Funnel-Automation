@@ -81,7 +81,7 @@ public class TestOtel extends BaseMethod {
         click(QUICKFILTER1);
         Thread.sleep(1000);
         click(OTELSELECT);
-        Thread.sleep(8000);
+        Thread.sleep(7000);
     }
 
     @Step("Switch to hotel details window")
@@ -141,7 +141,7 @@ public class TestOtel extends BaseMethod {
         sendKeys(INPUTCARDEXP, "25");
         Thread.sleep(1000);
         sendKeys(INPUTCARDCVC, "001");
-        Thread.sleep(2000);
+        Thread.sleep(3000);
     }
 
     @AfterMethod

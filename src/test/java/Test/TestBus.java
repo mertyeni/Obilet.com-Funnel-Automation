@@ -18,7 +18,6 @@ public class TestBus extends BaseMethod {
     @Test(description = "BusTR - Funnel") // Test açıklaması Allure raporlarına eklenecek
     public void testBus() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-
         allowFirstPopup();
         selectBusRoute("Bucak", "İzmir");
         selectBusDate();
@@ -31,6 +30,7 @@ public class TestBus extends BaseMethod {
 
     @Step("Allow the first popup to proceed")
     public void allowFirstPopup() throws InterruptedException {
+        Thread.sleep(1200);
         click(FIRSTALLOW);
         Thread.sleep(1000);
     }
@@ -64,6 +64,8 @@ public class TestBus extends BaseMethod {
     @Step("View details of the selected bus")
     public void viewBusDetails(JavascriptExecutor js) throws InterruptedException {
         js.executeScript("window.scrollTo(0, 300);");
+        Thread.sleep(3000);
+        click(LISTCLOSEPOPUP);
         Thread.sleep(1500);
         click(BUSDETAILS);
         Thread.sleep(5500);
@@ -99,7 +101,7 @@ public class TestBus extends BaseMethod {
         sendKeys(INPUTCARDNUMBER, "1111");
         Thread.sleep(1000);
         sendKeys(INPUTCARDEXP, "01");
-        sendKeys(INPUTCARDEXP, "25");
+        sendKeys(INPUTCARDEXP, "27");
         Thread.sleep(1000);
         sendKeys(INPUTCARDCVC, "001");
         Thread.sleep(2000);

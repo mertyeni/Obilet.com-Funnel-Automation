@@ -94,7 +94,7 @@ public class TestFerry extends BaseMethod {
     @Step("Confirm Ferry Journey")
     public void confirmFerryJourney() throws InterruptedException {
         click(FERRYCONFIRMJOURNEY);
-        Thread.sleep(10000);
+        Thread.sleep(14000);
     }
 
     @Step("Enter User Details (Email, Phone, Name, GOV ID)")
